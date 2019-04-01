@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
+    <script src="./DForm.js"></script>
+</head>
+
+<body>
+    <!-- <form class="cmxform" id="signupForm" method="get" action="">
+        <p>
+            <label for="firstname">Firstname</label>
+            <input id="firstname" name="firstname" type="text">
+        </p>
+        <p>
+            <label for="lastname">Lastname</label>
+            <input id="lastname" name="lastname" type="text">
+        </p>
+        <p>
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text">
+        </p>
+        <p>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password">
+        </p>
+        <p>
+            <label for="confirm_password">Confirm password</label>
+            <input id="confirm_password" name="confirm_password" type="password">
+        </p>
+        <p>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email">
+        </p>
+        <p>
+            <label for="agree">Please agree to our policy</label>
+            <input type="checkbox" class="checkbox" id="agree" name="agree">
+        </p>
+        <p>
+            <label for="newsletter">I'd like to receive the newsletter</label>
+            <input type="checkbox" class="checkbox" id="newsletter" name="newsletter">
+        </p>
+        <p>
+            <input class="submit" type="submit" value="Submit">
+        </p>
+        </fieldset>
+    </form> -->
+    <form id="dForm"></form>
+</body>
+<script>
+    var config = {
+        "elements": [{
+            "Label": "Please Enter First Name",
+            "elementname": "input", //default element is input
+            "elementAttributes": [{
+                "id": "firstname",
+                "class": "form-control",
+                "placeholder": "First Name",
+                "data-cygnet": "Kunal Soni"
+            }],
+        }, {
+            "Label": "Please Enter Last Name",
+            "elementAttributes": [{
+                "id": "lastname",
+                "class": "form-control",
+            }],
+        }, {
+            "Label": "Please Enter UserName",
+            "elementAttributes": [{
+                "id": "username",
+                "class": "form-control",
+            }],
+        }, {
+            "wrapperClass":"form-check",
+            "LabelPosition": 1,
+            "Label": "Please Enter Password",
+            "elementAttributes": [{
+                "id": "password",
+                "class": "form-check-input",
+                "type": "checkbox"
+            }],
+        }]
+    }
+    $('#dForm').dform(config);
+    $("#dForm").validate({
+        rules: {
+            firstname: "required",
+            lastname: "required",
+            username: {
+                required: true,
+                minlength: 2
+            },
+            password: {
+                required: true,
+                minlength: 5
+            },
+        },
+        messages: {
+            firstname: "Please enter your firstname",
+            lastname: "Please enter your lastname",
+            username: {
+                required: "Please enter a username",
+                minlength: "Your username must consist of at least 2 characters"
+            },
+            password: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 5 characters long"
+            }
+        }
+    });
+</script>
+
+</html>
